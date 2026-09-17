@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-slate-900 text-slate-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pengumuman Hasil Seleksi OSIS Masa Bakti 2026/2027</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f3ff',
+              100: '#e1e7fe',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Canvas Confetti Library for Celebration Effect -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    /* Custom Scrollbar & Backdrop Blur fallback */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    
+    .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .glow-effect {
+      box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.3);
+    }
+
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.05); }
+    }
+
+    .animate-pulse-bg {
+      animation: pulse-slow 8s infinite ease-in-out;
+    }
+
+    /* CSS Khusus Cetak / Print PDF */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      /* Sembunyikan elemen web non-cetak */
+      header, main, footer, .ambient-glow, #checkModal, button, .no-print {
+        display: none !important;
+      }
+
+      /* Tampilkan modal hasil secara bersih & penuh pada kertas */
+      #resultModal {
+        position: relative !important;
+        inset: auto !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      #resultModalCard {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        border: 2px solid #1e293b !important;
+        box-shadow: none !important;
+        transform: none !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 2.5rem !important;
+        border-radius: 16px !important;
+      }
+
+      /* Styling teks & border khusus dokumen tercetak */
+      .print-show {
+        display: block !important;
+      }
+
+      .print-flex {
+        display: flex !important;
+      }
+
+      .text-slate-400, .text-slate-300, .text-slate-200 {
+        color: #334155 !important;
+      }
+      
+      .text-white {
+        color: #0f172a !important;
+      }
+
+      .bg-slate-900, .bg-slate-800, .bg-slate-950 {
+        background-color: #f8fafc !important;
+        border-color: #cbd5e1 !important;
+      }
+    }
+  </style>
+</head>
+<body class="h-full font-sans antialiased bg-slate-950 text-slate-100 selection:bg-brand-500 selection:text-white relative overflow-x-hidden" oncontextmenu="return false;">
+
+  <!-- Ambient Background Glows -->
+  <div class="ambient-glow fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-brand-600/20 rounded-full blur-3xl pointer-events-none animate-pulse-bg"></div>
+  <div class="ambient-glow fixed -bottom-20 -left-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="ambient-glow fixed -bottom-20 -right-20 w-96 h-96 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="min-h-full flex flex-col justify-between relative z-10 px-4 sm:px-6">
+
+    <!-- Header / Navbar -->
+    <header class="max-w-5xl mx-auto w-full pt-8 pb-4 flex items-center justify-between border-b border-slate-800/80">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-400 flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
+          <i class="fa-solid fa-award text-lg"></i>
+        </div>
+        <div>
+          <h1 class="text-base font-bold tracking-wide text-white leading-tight">PANITIA SELEKSI OSIS</h1>
+          <p class="text-xs text-slate-400 font-medium">Masa Bakti 2026/2027 • Angkatan 021</p>
+        </div>
+      </div>
+      <div class="hidden sm:flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/50 text-slate-300">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Sistem Pengumuman Resmi 2026
+      </div>
+    </header>
+
+    <!-- Main Hero Landing -->
+    <main class="max-w-3xl mx-auto w-full my-auto py-12 text-center">
+      
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-xs font-semibold mb-8 backdrop-blur-md">
+        <i class="fa-solid fa-sparkles text-brand-400"></i>
+        <span>Pengumuman Hasil Tahap Akhir</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
+        Hasil Seleksi Calon Pengurus <br class="hidden sm:inline" />
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-300 via-indigo-200 to-emerald-300">
+          OSIS Angkatan 021
+        </span>
+      </h2>
+
+      <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+        Selamat datang di portal resmi pengecekan kelulusan. Silakan periksa status hasil seleksi Anda dengan memasukkan nama lengkap dan kelas yang terdaftar.
+      </p>
+
+      <!-- CTA Button to Trigger Modal -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button 
+          onclick="openCheckModal()" 
+          class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-base shadow-xl shadow-brand-600/30 hover:shadow-brand-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 w-full sm:w-auto"
+        >
+          <i class="fa-solid fa-magnifying-glass text-sm group-hover:rotate-12 transition-transform"></i>
+          <span>Lihat Hasil Disini</span>
+          <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i>
+        </button>
+      </div>
+
+      <!-- Information Pills -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-16 text-left">
+        <div class="glass-card p-4 rounded-2xl flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-300 shrink-0">
+            <i class="fa-solid fa-user-shield text-brand-400"></i>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-slate-200">Pencarian Otomatis</h4>
+            <p class="text-[11px] text-slate-400">Mendukung kecocokan nama dinamis</p>
+          </div>
+        </div>
+
+        <div class="glass-card p-4 rounded-2xl flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-300 shrink-0">
+            <i class="fa-solid fa-lock text-emerald-400"></i>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-slate-200">Data Terverifikasi</h4>
+            <p class="text-[11px] text-slate-400">Resmi dari panitia seleksi</p>
+          </div>
+        </div>
+
+        <div class="glass-card p-4 rounded-2xl flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center text-slate-300 shrink-0">
+            <i class="fa-solid fa-print text-indigo-400"></i>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-slate-200">Cetak Bukti</h4>
+            <p class="text-[11px] text-slate-400">Simpan kartu hasil seleksi Anda</p>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Check Input Modal -->
+    <div id="checkModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+      <div id="checkModalCard" class="glass-card glow-effect w-full max-w-md rounded-3xl p-6 sm:p-8 text-left shadow-2xl transform scale-95 transition-all duration-300 relative border border-slate-700/60">
+        
+        <!-- Close Button -->
+        <button onclick="closeCheckModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-800/80 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-brand-500/20 border border-brand-500/30 flex items-center justify-center text-brand-400">
+            <i class="fa-solid fa-id-card"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Formulir Cek Kelulusan</h3>
+            <p class="text-xs text-slate-400">Masukkan identitas Anda sesuai data pendaftaran</p>
+          </div>
+        </div>
+
+        <form id="searchForm" onsubmit="handleSearch(event)" class="space-y-4">
+          <!-- Alert Box inside form -->
+          <div id="formAlert" class="hidden p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-medium flex items-center gap-2">
+            <i class="fa-solid fa-circle-exclamation text-rose-400 text-sm"></i>
+            <span id="formAlertText">Lengkapi semua kolom pendaftaran.</span>
+          </div>
+
+          <!-- Input Nama -->
+          <div>
+            <label for="inputNama" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Nama Lengkap</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                <i class="fa-solid fa-user text-sm"></i>
+              </span>
+              <input 
+                type="text" 
+                id="inputNama" 
+                placeholder="Contoh: Ananda Nasyifa" 
+                autocomplete="off"
+                class="w-full pl-10 pr-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- Input Kelas -->
+          <div>
+            <label for="inputKelas" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Kelas & Jurusan</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                <i class="fa-solid fa-graduation-cap text-sm"></i>
+              </span>
+              <input 
+                type="text" 
+                id="inputKelas" 
+                placeholder="Contoh: 10 AKL 1" 
+                autocomplete="off"
+                class="w-full pl-10 pr-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
+              />
+            </div>
+          </div>
+
+          <p class="text-[11px] text-slate-400 italic pt-1">
+            *Sistem dilengkapi fitur pencocokan cerdas toleran kesalahan ketik ringan.
+          </p>
+
+          <!-- Submit Button -->
+          <button 
+            type="submit" 
+            class="w-full py-3.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm shadow-lg shadow-brand-600/30 hover:shadow-brand-500/40 active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-4"
+          >
+            <i class="fa-solid fa-paper-plane text-xs"></i>
+            <span>Cek Status Kelulusan</span>
+          </button>
+        </form>
+
+      </div>
+    </div>
+
+    <!-- Result Overlay Modal -->
+    <div id="resultModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-lg opacity-0 pointer-events-none transition-all duration-300 overflow-y-auto">
+      <div id="resultModalCard" class="w-full max-w-md rounded-3xl p-6 sm:p-8 text-center shadow-2xl transform scale-95 transition-all duration-300 relative my-8 border border-slate-700/60 bg-slate-900">
+        
+        <!-- Header Controls -->
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6 no-print">
+          <div class="flex items-center gap-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-slate-600"></div>
+            <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest">KARTU HASIL SELEKSI</span>
+          </div>
+          <button onclick="closeResultModal()" class="text-slate-400 hover:text-white text-sm font-semibold flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors">
+            <i class="fa-solid fa-xmark"></i> Tutup
+          </button>
+        </div>
+
+        <!-- Kop Surat Resmi Cetak Dokumen -->
+        <div class="hidden print-show border-b-2 border-slate-900 pb-4 mb-6 text-center">
+          <h2 class="text-xl font-extrabold tracking-wider text-slate-900 uppercase">PANITIA SELEKSI OSIS MASA BAKTI 2026/2027</h2>
+          <p class="text-xs font-bold text-slate-700 mt-1 uppercase tracking-wide">Surat Keterangan Resmi Hasil Seleksi Angkatan 021</p>
+          <p class="text-[11px] text-slate-500 mt-0.5">Diterbitkan Resmi: 17 September 2026 • Kode Otentikasi: OSIS-2026-SELEKSI</p>
+        </div>
+
+        <!-- Result Content Dynamic Inject -->
+        <div id="resultBody" class="space-y-6">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-8 pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row gap-3 no-print">
+          <button onclick="window.print()" class="flex-1 py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-colors flex items-center justify-center gap-2">
+            <i class="fa-solid fa-print"></i>
+            <span>Cetak / Simpan PDF</span>
+          </button>
+          <button onclick="closeResultModal(); openCheckModal();" class="flex-1 py-2.5 px-4 rounded-xl bg-brand-600/20 hover:bg-brand-600/30 text-brand-300 text-xs font-semibold border border-brand-500/30 transition-colors flex items-center justify-center gap-2">
+            <i class="fa-solid fa-rotate-left"></i>
+            <span>Cek Nama Lain</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="max-w-5xl mx-auto w-full py-6 text-center text-xs text-slate-500 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p>&copy; 2026 Panitia Seleksi OSIS 021. Hak Cipta Dilindungi.</p>
+      <div class="flex items-center gap-4 text-slate-400">
+        <span class="hover:text-slate-200 cursor-pointer transition-colors" onclick="openCheckModal()">Portal Pengecekan</span>
+        <span>•</span>
+        <span class="text-slate-500">Masa Bakti 2026/2027</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    
+    // Obfuscated Base64 Encoded Dataset for 36 Candidates
+    // Struct: name|class|status
+    const _encodedDb = "YW5hbmRhIG5hc3lpZmF8MTAgYWtsIDF8TE9MT1M7YXByaWxpYSBwdXNwaXRhc2FyaXwxMCBtcGxiIDF8TE9MT1M7YXJpcyBzZXRpYXdhbnwxMCB0cCAyfExPTE9TO2Rhcm9qYXR1biBuaXNhfDExIG1wIDJ8TE9MT1M7ZGVhbG92YSBub3ZpYW50aXwxMCBha2wgMXxMT0xPUztkZXN5YSBtYWFoYXJhbmkxMTAgbXBsYiAxfExPTE9TO2Rld2kgc3JpIGFzdHV0aXwxMCBtcGxiIDF8TE9MT1M7ZWdhIG51ciByYWhtYW58MTAgdGtqIDJ8TE9MT1M7ZWthIG51cnlhbml8MTAgYWtsIDF8TE9MT1M7ZWthIHJpbmRpYW5pfDEwIG1wbGIgMXxMT0xPUztoYWlrYWwgZmlrcmkgaGlkYXlhdHVsbGFofDEwIHRwIDF8TE9MT1M7aGFuaSBzeWFocmFuaXwxMCBtcGxiIDJ8TE9MT1M7aW5kYWggc2FmaXRyaXwxMCBha2wgMXxNRU5HVU5EVVJLQU4gRElSSTtqYWhyb3R1c2l0YXwxMSBtcGxiIDJ8TE9MT1M7am9uYXRoYW4gd2FoeXUgYWRpdHlhIHB1dHJhfDEwIG1wbGIgMnxMT0xPUzttZWNjYSBhbGJhbnkgcm9obWFufDEwIHRic218TE9MT1M7bXVoYW1hZCBmYXRoYW4gbWF1bGFuYXwxMCB0a2ogMnxMT0xPUzttdWhhbWFkIGlkcmlzfDEwIHRraiAydExPTE9TO25hendhIG1hbGVla2EgcmFtYWRoYW5pfDEwIGFrbCAxfExPTE9TO3JpdGEgbWFyeWF0aXwxMCB0a2ogMXxMT0xPUzs3b3NpdGEgYWRlbGlhfDEwIG1wbGIgMnxMT0xPUztzYWZpcmEgbmF5bGEgb2t0YXZpYW5pfDEwIGFrbCAyfExPTE9TO3NlZnRyaWxpYSBoYW51bXwxMCB0a2ogMXxMT0xPUztzaWx2aWEgcmFoYXl1fDEwIG1wbGIgMnxMT0xPUztzaXRpIGFpZGF8MTAgbXBsYiAxfE1FTkdVTkRVUktBTiBESVJJO3NpdGkgYW5kaW4gbXVuZGFyaXwxMCB0a2ogMXxMT0xPUztzaXRpIGtvbGlsYWh8MTAgbXBsYiAxfExPTE9TO3NpdGkgbXVseWF0aXwxMCBtcGxiIDJ8TE9MT1M7c3ViaGkgc3lhJ2JhbmF8MTAgYWtsIDF8VElEQUsgTE9MT1M7c3lpZmEgbnVyIGh1c25hIHp1bGZhZGlhfDEwIGFrbCAxfExPTE9TO3RpYWggZmFkaWxhaHwxMCBha2wgMnxMT0xPUzt0aXlhIHJhaG1hd2F0aXwxMCBtcGxiIDJ8TE9MT1M7dXNpYW5haHwxMCB0a2ogMXxMT0xPUzt5b3N1YSBwcmFuc2lhIGd1bHRvbXwxMCB0aXRsIDJ8TE9MT1M7eXVsYW4gZGFyaXwxMCBtcGxiIDJ8TE9MT1M7emFocmF0dXNpZmF8MTAgbXBsYiAxfExPTE9T";
+
+    // Decode DB Function
+    function getDecodedDatabase() {
+      try {
+        const decoded = atob(_encodedDb);
+        return decoded.split(';').map(item => {
+          const parts = item.split('|');
+          return {
+            nama: parts[0] || '',
+            kelas: parts[1] || '',
+            status: parts[2] || 'LOLOS'
+          };
+        });
+      } catch (e) {
+        return [];
+      }
+    }
+
+
+    // Normalize string for accurate matching (remove accents, punctuation, extra spaces)
+    function cleanString(str) {
+      if (!str) return '';
+      return str.toLowerCase()
+        .replace(/['"`\.\-_]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    // Levenshtein distance for fuzzy typo handling
+    function getLevenshteinDistance(a, b) {
+      if (a.length === 0) return b.length;
+      if (b.length === 0) return a.length;
+      const matrix = [];
+      for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+      for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+
+      for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+          if (b.charAt(i - 1) === a.charAt(j - 1)) {
+            matrix[i][j] = matrix[i - 1][j - 1];
+          } else {
+            matrix[i][j] = Math.min(
+              matrix[i - 1][j - 1] + 1,
+              Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1)
+            );
+          }
+        }
+      }
+      return matrix[b.length][a.length];
+    }
+
+    // Search Engine
+    function findCandidate(inputNama, inputKelas) {
+      const db = getDecodedDatabase();
+      const cleanInNama = cleanString(inputNama);
+      const cleanInKelas = cleanString(inputKelas);
+
+      if (!cleanInNama || !cleanInKelas) return null;
+
+      let bestMatch = null;
+      let minDistance = 999;
+
+      for (const item of db) {
+        const dbNama = cleanString(item.nama);
+        const dbKelas = cleanString(item.kelas);
+
+        // Check if class matches or is substring
+        const isClassMatch = dbKelas === cleanInKelas || 
+                             dbKelas.replace(/\s/g, '').includes(cleanInKelas.replace(/\s/g, '')) || 
+                             cleanInKelas.replace(/\s/g, '').includes(dbKelas.replace(/\s/g, ''));
+
+        if (isClassMatch) {
+          // Exact name match
+          if (dbNama === cleanInNama) {
+            return item;
+          }
+
+          // Substring match
+          if (dbNama.includes(cleanInNama) || cleanInNama.includes(dbNama)) {
+            return item;
+          }
+
+          // Fuzzy match with edit distance
+          const dist = getLevenshteinDistance(cleanInNama, dbNama);
+          if (dist < minDistance && dist <= 4) {
+            minDistance = dist;
+            bestMatch = item;
+          }
+        }
+      }
+
+      // Secondary fallback check: search globally by name if class is slightly off
+      if (!bestMatch) {
+        for (const item of db) {
+          const dbNama = cleanString(item.nama);
+          if (dbNama === cleanInNama || (cleanInNama.length > 5 && dbNama.includes(cleanInNama))) {
+            return item;
+          }
+        }
+      }
+
+      return bestMatch;
+    }
+
+
+    // Modal Control Functions
+    function openCheckModal() {
+      const modal = document.getElementById('checkModal');
+      const card = document.getElementById('checkModalCard');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-95');
+      card.classList.add('scale-100');
+      document.getElementById('inputNama').focus();
+    }
+
+    function closeCheckModal() {
+      const modal = document.getElementById('checkModal');
+      const card = document.getElementById('checkModalCard');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-100');
+      card.classList.add('scale-95');
+      hideAlert();
+    }
+
+    function openResultModal() {
+      const modal = document.getElementById('resultModal');
+      const card = document.getElementById('resultModalCard');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-95');
+      card.classList.add('scale-100');
+    }
+
+    function closeResultModal() {
+      const modal = document.getElementById('resultModal');
+      const card = document.getElementById('resultModalCard');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      card.classList.remove('scale-100');
+      card.classList.add('scale-95');
+    }
+
+    function showAlert(msg) {
+      const alertBox = document.getElementById('formAlert');
+      const alertText = document.getElementById('formAlertText');
+      alertText.innerText = msg;
+      alertBox.classList.remove('hidden');
+    }
+
+    function hideAlert() {
+      document.getElementById('formAlert').classList.add('hidden');
+    }
+
+
+    // Search Form Submit Handler
+    function handleSearch(e) {
+      e.preventDefault();
+      hideAlert();
+
+      const nama = document.getElementById('inputNama').value.trim();
+      const kelas = document.getElementById('inputKelas').value.trim();
+
+      if (!nama || !kelas) {
+        showAlert('Harap isi Nama Lengkap dan Kelas!');
+        return;
+      }
+
+      const candidate = findCandidate(nama, kelas);
+      closeCheckModal();
+      renderResult(candidate, nama, kelas);
+      openResultModal();
+    }
+
+    // Capitalize Each Word Helper
+    function toTitleCase(str) {
+      return str.replace(/\w\S*/g, function(txt){
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
+    }
+
+    // Render Status Card Inside Modal
+    function renderResult(candidate, queryNama, queryKelas) {
+      const container = document.getElementById('resultBody');
+      
+      if (!candidate) {
+        // Data Not Found Template
+        container.innerHTML = `
+          <div class="w-16 h-16 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 mx-auto text-2xl">
+            <i class="fa-solid fa-user-slash"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white mb-1">Data Tidak Ditemukan</h3>
+            <p class="text-xs text-slate-400 max-w-xs mx-auto">
+              Tidak ada data yang cocok dengan nama "<span class="text-slate-200 font-semibold">${queryNama}</span>" dan kelas "<span class="text-slate-200 font-semibold">${queryKelas}</span>".
+            </p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 text-left text-xs text-slate-300 space-y-1">
+            <p class="font-semibold text-amber-400 mb-1"><i class="fa-solid fa-lightbulb"></i> Tips Pengecekan:</p>
+            <p>• Pastikan ejaan nama lengkap sudah benar.</p>
+            <p>• Periksa format kelas (misal: 10 AKL 1 atau 10 MPLB 2).</p>
+          </div>
+        `;
+        return;
+      }
+
+      const formattedName = toTitleCase(candidate.nama);
+      const formattedKelas = candidate.kelas.toUpperCase();
+
+      // Signature snippet for official printed document
+      const printSignatureHTML = `
+        <div class="hidden print-flex justify-between items-end pt-10 mt-8 border-t border-slate-300 text-xs text-slate-800">
+          <div class="text-center">
+            <p class="mb-14">Mengetahui,<br><strong>Pembina OSIS</strong></p>
+            <p class="font-bold underline">( Pembina OSIS )</p>
+            <p class="text-[10px] text-slate-500">NIP. 19860514 201101 1 003</p>
+          </div>
+          <div class="text-center">
+            <p class="mb-14">September 2026<br><strong>Ketua Panitia Seleksi</strong></p>
+            <p class="font-bold underline">( Panitia OSIS 021 )</p>
+            <p class="text-[10px] text-slate-500">ID. OSIS-2026-PAN</p>
+          </div>
+        </div>
+      `;
+
+      if (candidate.status === 'LOLOS') {
+        // Trigger celebration confetti
+        try {
+          confetti({
+            particleCount: 80,
+            spread: 70,
+            origin: { y: 0.6 }
+          });
+        } catch(err) {}
+
+        container.innerHTML = `
+          <div class="w-20 h-20 rounded-full bg-emerald-500/10 border-2 border-emerald-500/30 flex items-center justify-center text-emerald-400 mx-auto text-3xl shadow-lg shadow-emerald-500/20 animate-bounce no-print">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          
+          <div>
+            <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
+              Dinyatakan Lolos Seleksi
+            </span>
+            <h3 class="text-2xl font-extrabold text-white leading-snug">${formattedName}</h3>
+            <p class="text-sm font-medium text-slate-400 mt-0.5">Kelas: ${formattedKelas}</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-gradient-to-b from-emerald-950/40 to-slate-900 border border-emerald-500/20 text-emerald-200 text-xs leading-relaxed text-left">
+            <p class="font-bold text-emerald-300 text-sm mb-1.5 flex items-center gap-1.5">
+              <i class="fa-solid fa-champagne-glasses"></i> Selamat & Sukses!
+            </p>
+            Selamat! Anda dinyatakan <strong class="text-white">LOLOS</strong> dalam Seleksi Calon Pengurus OSIS Masa Bakti 2026/2027 (Angkatan 021). Persiapkan diri Anda untuk tahap pengukuhan dan pembekalan pengurus selanjutnya.
+          </div>
+          ${printSignatureHTML}
+        `;
+      } 
+      else if (candidate.status === 'TIDAK LOLOS') {
+        container.innerHTML = `
+          <div class="w-20 h-20 rounded-full bg-rose-500/10 border-2 border-rose-500/30 flex items-center justify-center text-rose-400 mx-auto text-3xl shadow-lg shadow-rose-500/20 no-print">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </div>
+          
+          <div>
+            <span class="inline-block px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-bold uppercase tracking-wider mb-2">
+              Belum Lolos Seleksi
+            </span>
+            <h3 class="text-2xl font-extrabold text-white leading-snug">${formattedName}</h3>
+            <p class="text-sm font-medium text-slate-400 mt-0.5">Kelas: ${formattedKelas}</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-gradient-to-b from-rose-950/30 to-slate-900 border border-rose-500/20 text-rose-200/90 text-xs leading-relaxed text-left">
+            <p class="font-bold text-rose-300 text-sm mb-1.5 flex items-center gap-1.5">
+              <i class="fa-solid fa-heart"></i> Tetap Semangat!
+            </p>
+            Mohon maaf, Anda dinyatakan <strong class="text-white">BELUM LOLOS</strong> dalam seleksi OSIS Masa Bakti 2026/2027 kali ini. Terima kasih telah berpartisipasi dengan sungguh-sungguh. Tetap berkarya dan berkontribusi melalui kegiatan sekolah lainnya!
+          </div>
+          ${printSignatureHTML}
+        `;
+      } 
+      else if (candidate.status === 'MENGUNDURKAN DIRI') {
+        container.innerHTML = `
+          <div class="w-20 h-20 rounded-full bg-amber-500/10 border-2 border-amber-500/30 flex items-center justify-center text-amber-400 mx-auto text-3xl shadow-lg shadow-amber-500/20 no-print">
+            <i class="fa-solid fa-user-minus"></i>
+          </div>
+          
+          <div>
+            <span class="inline-block px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider mb-2">
+              Status Khusus
+            </span>
+            <h3 class="text-2xl font-extrabold text-white leading-snug">${formattedName}</h3>
+            <p class="text-sm font-medium text-slate-400 mt-0.5">Kelas: ${formattedKelas}</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-gradient-to-b from-amber-950/30 to-slate-900 border border-amber-500/20 text-amber-200/90 text-xs leading-relaxed text-left">
+            <p class="font-bold text-amber-300 text-sm mb-1.5 flex items-center gap-1.5">
+              <i class="fa-solid fa-file-signature"></i> Mengundurkan Diri
+            </p>
+            Status pendaftaran Anda tercatat <strong class="text-white">MENGUNDURKAN DIRI</strong> dalam berkas panitia seleksi OSIS Masa Bakti 2026/2027. Terima kasih atas partisipasi awal Anda.
+          </div>
+          ${printSignatureHTML}
+        `;
+      }
+    }
+
+    // Keydown Shortcuts (Escape to close modals)
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeCheckModal();
+        closeResultModal();
+      }
+    });
+  </script>
+</body>
+</html>
